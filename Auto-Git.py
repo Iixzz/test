@@ -4,16 +4,12 @@ from time import sleep
 
 
 #Abfrage ob push oder pull
-"""
-aufgabe = int(input("push(1) oder pull(2): "))
-message = str(input("commit Message: "))
-repository = str(input("URL des GitHub-Repository: "))
-datei = str(input("Dateiname zum hinzufügen (für alle "."): "))
-"""
 
-aufgabe = 1
-repository = "https://github.com/Iixzz/Auto-Git.git"
-datei = str(input("Dateiname zum hinzufügen: "))
+aufgabe = int(input("push(1) oder pull(2): "))
+repository = str(input("URL des GitHub-Repository: "))
+datei = str(input("Dateiname zum hinzufügen (für alle .): "))
+message = str(input("commit Message: "))
+
 
 #Text eingeben
 def text(msg1, msg2):
@@ -39,6 +35,16 @@ sleep(0.5)
 #git Datein hinzufügen
 if datei == ".":
     text("git add .", "")
+sleep(0.5)
 
+#Datein commiten
+if message != "": 
+    text("git commit -m ", message)
+else:
+    print("Üngültige eingabe")
+    message = str(input("commit Message: "))
+sleep(0.5)
 
+#Datein auf GitHub pushen 
+text("git push origin master", "")
 
