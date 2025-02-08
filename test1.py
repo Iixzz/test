@@ -1,24 +1,18 @@
-import os
-import keyboard as kb
+def push():
+    print("Push wurde ausgeführt!")
 
-def text(msg1, msg2):
-    kb.write(msg1 +msg2)
-    kb.press_and_release("enter")
+def pull():
+    print("Pull wurde ausgeführt!")
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-datein_liste = []
-while True:
-    datei = str(input("Gib eine Dateinnamen ein (oder . für alle oder ENTER zum Beenden): "))
-    if datei == "" :
-        break
-    datein_liste.append(datei)
-vorhandene_datein = os.listdir(script_dir)
 
-if datein_liste[0] == ".":
-    text("git add .", "")
-else:
-    for datei in datein_liste:
-        if datei in vorhandene_datein:
-            text("git add ", datei)
-        else:
-            print(f"{datei} nicht vorhanden! Überprüfen Sie die Schreibweise.")
+try:
+    if aufgabe == 1:
+        push()
+    elif aufgabe == 2:
+        pull()
+    else:
+        print("Ungültige Auswahl. Bitte 1 oder 2 eingeben.")
+except ValueError:  # Falls die Eingabe keine Zahl ist
+    print("Ungültige Eingabe! Bitte eine Zahl eingeben.")
+except NameError:  # Falls push() oder pull() nicht definiert sind
+    print("Funktion nicht definiert!")
