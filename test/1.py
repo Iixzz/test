@@ -1,12 +1,9 @@
-datein_liste = []
-while True:
-    datei = str(input("Gib eine Dateinnamen ein (oder . für alle oder ENTER zum Beenden): "))
-    if datei == "" :
-        break
-    elif datei == ".":
-        datein_liste = "."
-        break
-    else:
-        datein_liste.append(datei)
+import os
 
-print(datein_liste)
+class push():
+     def __init__(self):
+        self.commit_message = str(input("message: "))
+        m1 = f"'{self.commit_message}'"
+        print(m1)
+
+push()

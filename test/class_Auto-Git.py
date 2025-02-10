@@ -8,9 +8,12 @@ aufgabe = int(input("push(1) oder pull(2) oder mit tag(3): "))
 class push():
     def __init__(self):
         self.repository_URL = str(input("URL des GitHub-Repository: "))
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
+        self.commit_message = str(input("message: "))
+        m1 = f""{self.commit_message}""
 
         self.datein_liste = []
+        self.vorhandene_dateien = os.listdir(self.script_dir)
         while True:
             self.datei = str(input("Gib eine Dateinnamen ein (oder . für alle oder ENTER zum Beenden): "))
             if self.datei == "" :
@@ -19,11 +22,15 @@ class push():
                 self.datein_liste = "."
                 break
             else:
-                self.datein_liste.append(datei)
-                self.dateipfad = os.path.join(self.script_dir, self.datei )
+                if self.datei in self.vorhandene_dateien:
+                    self.datein_liste.append(self.datei)
+                else:
+                    print("datei nicht vorhanden")
+                    pass
+
 
         os.system("start cmd")
-        sleep(0.5)
+        sleep(1)
 
         text("cd /d ", self.script_dir)
 
@@ -35,6 +42,9 @@ class push():
         else:
             for datei in self.datein_liste:
                 text("git add", datei)
+
+        text("git commit -m ", m1)
+        text("git push origin master", "")
 
 class pull():
     def __init__(self):
