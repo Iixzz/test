@@ -1,1 +1,0 @@
-"push(1) oder pull(2): "

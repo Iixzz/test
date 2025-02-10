@@ -10,7 +10,7 @@ class push():
         self.repository_URL = str(input("URL des GitHub-Repository: "))
         self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
         self.commit_message = str(input("message: "))
-        m1 = f""{self.commit_message}""
+        m1 = f'"{self.commit_message}"'
 
         self.datein_liste = []
         self.vorhandene_dateien = os.listdir(self.script_dir)
@@ -46,32 +46,6 @@ class push():
         text("git commit -m ", m1)
         text("git push origin master", "")
 
-class pull():
-    def __init__(self):
-        self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
-        self.repository_URL = str(input("URL des GitHub-Repository: "))
-        
-        os.system("start cmd")
-        sleep(0.5)
-
-        text("cd /d ", self.script_dir)
-
-        text("git init", "")
-        text("git remote add origin ", self.repository_URL)
-        text("git pull origin master", "")
-
-class tag():
-    def __init__(self):
-        self.script_dir = str(input("Ordner zum hochladen (Dateipfad): "))
-        self.repository_URL = str(input("URL des GitHub-Repository: "))
-        os.system("start cmd")
-        sleep(0.5)
-
-        text("cd /d ", self.script_dir)
-
-        text("git init", "")
-        text("git remote add origin ", self.repository_URL)
-        text("git pull origin master", "")
 
 
 def text(msg1, msg2):
@@ -80,14 +54,5 @@ def text(msg1, msg2):
 
 
 #Ausführung
-try:
-    if aufgabe == 1:
-        push()
-    elif aufgabe == 2:
-        pull()
-    elif aufgabe == 3:
-        tag()
-    else:
-        print("Ungültige Auswahl. Bitte 1 oder 2 eingeben.")
-except ValueError:  # Falls die Eingabe keine Zahl ist
-    print("Ungültige Eingabe! Bitte eine Zahl eingeben.")
+if __name__ == "__main__":
+    git_pull = push()
