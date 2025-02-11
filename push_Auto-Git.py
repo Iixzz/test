@@ -8,7 +8,7 @@ from time import sleep
 
 class push():
     def __init__(self):
-        self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
+        self.script_dir = str(input("Ordner zum hochladen (Dateipfad): "))
         self.repository_URL = str(input("URL des GitHub-Repository: "))
         self.commit_message = str(input("message: "))
         self.convert_commit_message = f'"{self.commit_message}"'
@@ -36,7 +36,7 @@ class push():
     def doPush(self):
         self.checkDatein()
 
-        os.system("start /b cmd")
+        os.system("start cmd")
         sleep(1)
 
         text("cd /d ", self.script_dir)
