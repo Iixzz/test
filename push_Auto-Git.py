@@ -1,7 +1,7 @@
 import os
 import keyboard as kb
 from time import sleep
-import sys
+
 
 
 
@@ -54,7 +54,7 @@ class push():
         text("git push origin master", "")
         sleep(1)
 
-        sys.exit()
+        os.system("taskkill /F /IM cmd.exe")
 
 def text(msg1, msg2):
     kb.write(msg1 +msg2)

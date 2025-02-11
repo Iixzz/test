@@ -1,18 +1,18 @@
 import os
 import keyboard as kb
 from time import sleep
-import sys
 
 
 class pull():
     def __init__(self):
-        os.system("start cmd")
+        self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
+        self.repository_URL = str(input("URL des GitHub-Repository: "))
 
         self.do_pull()
     
     def do_pull(self):
-        self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
-        self.repository_URL = str(input("URL des GitHub-Repository: "))
+        os.system("start cmd")
+        sleep(1)
         
         text("cd /d ", self.script_dir)
         text("git init", "")
@@ -20,7 +20,7 @@ class pull():
         text("git pull origin master", "")
         sleep(1)
 
-        sys.exit()
+        os.system("taskkill /F /IM cmd.exe")
 
 
 
