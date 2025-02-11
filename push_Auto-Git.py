@@ -36,7 +36,7 @@ class push():
     def doPush(self):
         self.checkDatein()
 
-        os.system("start cmd")
+        os.system("start /b cmd")
         sleep(1)
 
         text("cd /d ", self.script_dir)

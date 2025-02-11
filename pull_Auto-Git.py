@@ -11,7 +11,7 @@ class pull():
         self.do_pull()
     
     def do_pull(self):
-        os.system("start cmd")
+        os.system("start /b cmd")
         sleep(1)
         
         text("cd /d ", self.script_dir)

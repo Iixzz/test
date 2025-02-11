@@ -13,7 +13,7 @@ class tag():
         self.doTag()
 
     def doTag(self):
-        os.system("start cmd")
+        os.system("start /b cmd")
         sleep(0.5)
 
         text("cd /d ", self.script_dir)
