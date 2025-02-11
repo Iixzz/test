@@ -55,6 +55,8 @@ class push():
         text("git remote add origin ", self.repository_URL)
 
         self.checkDatein()
+        os.system("start cmd")
+        sleep(0.5)
 
         if self.datein_liste == ".":
             text("git add ", self.datein_liste)
