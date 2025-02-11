@@ -1,6 +1,7 @@
 import os
 import keyboard as kb
 from time import sleep
+import sys
 
 
 
@@ -51,8 +52,9 @@ class push():
 
         text("git commit -m ", self.convert_commit_message)
         text("git push origin master", "")
+        sleep(1)
 
-
+        sys.exit()
 
 def text(msg1, msg2):
     kb.write(msg1 +msg2)

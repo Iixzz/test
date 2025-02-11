@@ -1,6 +1,7 @@
 import os
 import keyboard as kb
 from time import sleep
+import sys
 
 
 
@@ -23,6 +24,9 @@ class tag():
 
         text("git tag ", self.version)
         text("git push origin ", self.version)
+        sleep(1)
+
+        sys.exit()
 
 def text(msg1, msg2):
     kb.write(msg1 +msg2)

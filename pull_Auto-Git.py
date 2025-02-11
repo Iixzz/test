@@ -1,6 +1,7 @@
 import os
 import keyboard as kb
 from time import sleep
+import sys
 
 
 class pull():
@@ -17,6 +18,9 @@ class pull():
         text("git init", "")
         text("git remote add origin ", self.repository_URL)
         text("git pull origin master", "")
+        sleep(1)
+
+        sys.exit()
 
 
 
