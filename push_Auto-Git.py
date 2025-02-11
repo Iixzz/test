@@ -4,19 +4,6 @@ from time import sleep
 
 
 
-"""text("cd /d ", self.script_dir)
-
-        text("git init", "")
-        text("git remote add origin ", self.repository_URL)
-
-        if self.datein_liste == ".":
-            text("git add ", self.datein_liste)
-        else:
-            for datei in self.datein_liste:
-                text("git add", datei)
-
-        text("git commit -m ", convert_commit_message)
-        text("git push origin master", "")"""
 
 class push():
     def __init__(self):
@@ -46,17 +33,15 @@ class push():
         return self.datein_liste
     
     def doPush(self):
+        self.checkDatein()
+
         os.system("start cmd")
-        sleep(0.5)
+        sleep(1)
 
         text("cd /d ", self.script_dir)
 
         text("git init", "")
         text("git remote add origin ", self.repository_URL)
-
-        self.checkDatein()
-        os.system("start cmd")
-        sleep(0.5)
 
         if self.datein_liste == ".":
             text("git add ", self.datein_liste)
