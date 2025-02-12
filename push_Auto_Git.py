@@ -62,9 +62,10 @@ class push():
 
             text("git commit -m ", self.convert_commit_message)
             text("git push origin master", "")
+            text("git remote rm origin", "")
             sleep(1)
 
-            os.system("taskkill /F /IM cmd.exe")
+            #os.system("taskkill /F /IM cmd.exe")
             self.fehlerFrei += 1
             print(self.fehlerFrei)
 
