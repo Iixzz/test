@@ -18,6 +18,7 @@ class pull():
         text("git init", "")
         text("git remote add origin ", self.repository_URL)
         text("git pull origin master", "")
+        text("git remote rm origin", "")
         sleep(1)
 
         os.system("taskkill /F /IM cmd.exe")

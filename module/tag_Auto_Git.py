@@ -1,13 +1,38 @@
-import sys
 import os
+import keyboard as kb
+from time import sleep
 
-script_dir = str(input("Ordner zum hochladen (Dateipfad): ")) # Simuliert einen Fehler
 
-try:
-    vorhandene_dateien = os.listdir(script_dir)
-except Exception as e:
-    print(f"Fehler: {e}")
-    sys.exit()
 
-for i in range(100):
-    print("1")
+class tag():
+    def __init__(self):
+        self.version = str(input("Welche Version :"))
+        self.script_dir = str(input("Ordner zum hochladen (Dateipfad): "))
+        self.repository_URL = str(input("URL des GitHub-Repository: "))
+
+        self.doTag()
+
+    def doTag(self):
+        os.system("start cmd")
+        sleep(0.5)
+
+        text("cd /d ", self.script_dir)
+
+        text("git init", "")
+        text("git remote add origin ", self.repository_URL)
+
+        text("git tag ", self.version)
+        text("git push origin ", self.version)
+        text("git remote rm origin", "")
+        sleep(1)
+
+        os.system("taskkill /F /IM cmd.exe")
+
+def text(msg1, msg2):
+    kb.write(msg1 +msg2)
+    kb.press_and_release("enter")
+
+
+#Ausführung
+if __name__ == "__main__":
+    git_tag = tag()

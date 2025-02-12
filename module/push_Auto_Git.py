@@ -8,13 +8,12 @@ import sys
 
 
 class push():
-    def __init__(self  ):
-        self.script_dir = str(input("Ordner zum hochladen (Dateipfad): "))
-        self.repository_URL = str(input("URL des GitHub-Repository: "))
-        self.commit_message = str(input("message: "))
+    def __init__(self, ordner, repository, message):
+        self.script_dir = ordner
+        self.repository_URL = repository
+        self.commit_message = message
         self.convert_commit_message = f'"{self.commit_message}"'
 
-        self.fehlerFrei = 0
         self.doPush()
 
     def checkDatein(self):
@@ -23,7 +22,6 @@ class push():
             self.vorhandene_dateien = os.listdir(self.script_dir)
         except Exception as e:
             print(f"Fehler: {e}")
-            print(self.fehlerFrei)
             sys.exit()
 
 
@@ -65,13 +63,10 @@ class push():
             text("git remote rm origin", "")
             sleep(1)
 
-            #os.system("taskkill /F /IM cmd.exe")
-            self.fehlerFrei += 1
-            print(self.fehlerFrei)
+            os.system("taskkill /F /IM cmd.exe")
 
         except Exception as e:  # Ausnahmeobjekt als 'e' referenzieren
-            print(f"Fehler: {e}")
-            print(self.fehlerFrei)  # 'e' gibt die Ausnahme-Details an
+            print(f"Fehler: {e}")  # 'e' gibt die Ausnahme-Details an
             sys.exit()
 
 def text(msg1, msg2):

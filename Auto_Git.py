@@ -14,13 +14,13 @@ class mainWindow(tk.Tk):
         self.label = tk.Label(self, text="Auf GitHub Hochladen", font = ("Arial", 18, "underline"))
         self.label.pack()
 
-        self.button_push = tk.Button(self, text= "Push", command = self.oeffne_push_window,)
+        self.button_push = tk.Button(self, text= "Push", command = self.oeffne_push_window)
         self.button_push.place(x = 75, y = 150, width= 90, height= 20)
 
-        self.button_pull = tk.Button(self, text= "Pull", command = self.oeffne_pull_window,)
+        self.button_pull = tk.Button(self, text= "Pull", command = self.oeffne_pull_window)
         self.button_pull.place(x = 255 , y = 150, width= 90, height= 20)
 
-        self.button_tag = tk.Button(self, text= "Tag", command = self.oeffne_tag_window,)
+        self.button_tag = tk.Button(self, text= "Tag", command = self.oeffne_tag_window)
         self.button_tag.place(x = 435, y = 150, width= 90, height= 20)
 
     def oeffne_push_window(self):
@@ -65,7 +65,15 @@ class PushWindow(tk.Tk):
         self.entry_message.place(x= 150, y= 185)
 
         #Eingabe bestätigen button 
-        self.eingabe_button = tk.Button(self, text="Eingabe bestätigen")
+        self.button_eingabe = tk.Button(self, text= "Eingabe bestätigen", command = self.eingabe)
+        self.button_eingabe.place(x = 225 , y = 220, width= 160, height= 20)
+
+    def eingabe(self):
+        ordner = self.entry_ordner.get()
+        repository = self.entry_repository.get()
+        message = self.entry_message.get()
+        pushAG.push(ordner, repository, message)
+
 
 class PullWindow(tk.Tk):
     def __init__(self):
@@ -121,7 +129,13 @@ class TagWindow(tk.Tk):
         self.entry_tag = tk.Entry(self, width=50)
         self.entry_tag.place(x= 150, y= 185)
 
-        #Eingabe bestätigen button 
+        #Eingabe bestätigen button
+        self.button_eingabe = tk.Button(self, text= "Pull", command = self.eingabe)
+        self.button_.place(x = 255 , y = 150, width= 90, height= 20)
+
+        def eingabe(self):
+            ordner = self.entry_ordner.get()
+
 
 
 
