@@ -21,11 +21,11 @@ class push():
         self.datein_liste = []
         try:
             self.vorhandene_dateien = os.listdir(self.script_dir)
-            self.fehlerFrei += 1
         except Exception as e:
             print(f"Fehler: {e}")
-            print(self.fehlerFrei)
             sys.exit()
+
+
             
         while True:
             self.datei = str(input("Gib eine Dateinnamen ein (oder . für alle oder ENTER zum Beenden): "))
@@ -41,7 +41,6 @@ class push():
                     print("datei nicht vorhanden")
                     pass
 
-        self.fehlerFrei += 1
         return self.datein_liste
     
     def doPush(self):

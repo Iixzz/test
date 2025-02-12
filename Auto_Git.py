@@ -1,6 +1,6 @@
-import pull_Auto_Git as pullAG
-import push_Auto_Git as pushAG
-import tag_Auto_Git as tagAG
+from module import pull_Auto_Git as pullAG
+from module import push_Auto_Git as pushAG
+from module import tag_Auto_Git as tagAG
 
 import tkinter as tk
 
