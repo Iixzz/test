@@ -8,16 +8,23 @@ import sys
 
 
 class push():
-    def __init__(self, ordner, repository, message):
+    def __init__(self, ordner, repository, message, datein):
         self.script_dir = ordner
         self.repository_URL = repository
         self.commit_message = message
         self.convert_commit_message = f'"{self.commit_message}"'
 
-        self.doPush()
 
-    def checkDatein(self):
-        self.datein_liste = []
+        self.doPush(datein)
+
+    def checkDatein(self, datein):
+        self.datein_liste = datein
+
+
+        if ";" in self.datein_liste:
+            self.datein = datein.split(";")
+
+        
         try:
             self.vorhandene_dateien = os.listdir(self.script_dir)
         except Exception as e:
@@ -25,9 +32,8 @@ class push():
             sys.exit()
 
 
-            
+        """    
         while True:
-            self.datei = str(input("Gib eine Dateinnamen ein (oder . für alle oder ENTER zum Beenden): "))
             if self.datei == "" :
                 break
             elif self.datei == ".":
@@ -41,10 +47,11 @@ class push():
                     pass
 
         return self.datein_liste
+        """
     
-    def doPush(self):
+    def doPush(self, datein):
         try:
-            self.checkDatein()
+            self.checkDatein(datein)
             os.system("start cmd")
             sleep(1)
 
