@@ -23,6 +23,7 @@ class push():
             self.vorhandene_dateien = os.listdir(self.script_dir)
         except Exception as e:
             print(f"Fehler: {e}")
+            print(self.fehlerFrei)
             sys.exit()
 
 
@@ -69,8 +70,8 @@ class push():
             print(self.fehlerFrei)
 
         except Exception as e:  # Ausnahmeobjekt als 'e' referenzieren
-            print(f"Fehler: {e}")  # 'e' gibt die Ausnahme-Details an
-            print(self.fehlerFrei)
+            print(f"Fehler: {e}")
+            print(self.fehlerFrei)  # 'e' gibt die Ausnahme-Details an
             sys.exit()
 
 def text(msg1, msg2):
