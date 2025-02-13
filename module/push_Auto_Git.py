@@ -18,36 +18,35 @@ class push():
         self.doPush(datein)
 
     def checkDatein(self, datein):
-        self.datein_liste = datein
+        self.datein_push = []
+        self.datein_eingabe = datein.strip()
 
-
-        if ";" in self.datein_liste:
-            self.datein = datein.split(";")
-
-        
         try:
             self.vorhandene_dateien = os.listdir(self.script_dir)
         except Exception as e:
             print(f"Fehler: {e}")
             sys.exit()
 
-
-        """    
-        while True:
-            if self.datei == "" :
-                break
-            elif self.datei == ".":
-                self.datein_liste = "."
-                break
-            else:
-                if self.datei in self.vorhandene_dateien:
-                    self.datein_liste.append(self.datei)
+        if ";" in self.datein_eingabe:
+            self.datein_liste = self.datein_eingabe.split(";")
+            for datei in self.datein_liste:
+                if datei in self.vorhandene_dateien:
+                    self.datein_push.append(datei)
                 else:
-                    print("datei nicht vorhanden")
-                    pass
+                    print(f"{datei} nicht vorhanden")
+                    sys.exit()
+        elif self.datein_eingabe == ".":
+            self.datein_push = "."
+        elif not self.datein_eingabe:
+            print("Fehler: Keine Datei eingegeben")
+            sys.exit(1)
+        else:
+            self.datein_push = self.datein_eingabe
 
-        return self.datein_liste
-        """
+
+
+        return self.datein_push
+    
     
     def doPush(self, datein):
         try:
@@ -59,10 +58,10 @@ class push():
             text("git init", "")
             text("git remote add origin ", self.repository_URL)
 
-            if self.datein_liste == ".":
-                text("git add ", self.datein_liste)
+            if self.datein_push == ".":
+                text("git add ", self.datein_push)
             else:
-                for datei in self.datein_liste:
+                for datei in self.datein_push:
                     text("git add ", datei)
 
             text("git commit -m ", self.convert_commit_message)
@@ -70,7 +69,7 @@ class push():
             text("git remote rm origin", "")
             sleep(1)
 
-            os.system("taskkill /F /IM cmd.exe")
+            """os.system("taskkill /F /IM cmd.exe")"""
 
         except Exception as e:  # Ausnahmeobjekt als 'e' referenzieren
             print(f"Fehler: {e}")  # 'e' gibt die Ausnahme-Details an
