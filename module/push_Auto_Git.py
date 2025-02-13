@@ -51,10 +51,10 @@ class push():
         #Nur eine Datei eingegeben
         else:
             if self.datein_eingabe in self.vorhandene_dateien:
-                self.datein_push = self.datein_eingabe
+                self.datein_push = list(self.datein_eingabe)
                 print("3")
             else:
-                print("Datei nicht vorhanden")
+                print(f"{self.datein_push} nicht vorhanden")
                 sys.exit()
 
         return self.datein_push
