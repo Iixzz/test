@@ -20,6 +20,7 @@ class push():
     def checkDatein(self, datein):
         self.datein_push = []
         self.datein_eingabe = datein.strip()
+        print(self.datein_eingabe)
 
         try:
             self.vorhandene_dateien = os.listdir(self.script_dir)
