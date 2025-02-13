@@ -3,13 +3,6 @@ test = "Hallo;2"
 datein_eingabe = test.strip()
 
 
-"""
-try:
-    self.vorhandene_dateien = os.listdir(self.script_dir)
-except Exception as e:
-    print(f"Fehler: {e}")
-    sys.exit()
-    """
 
 def asd(datein_eingabe): 
     if ";" in datein_eingabe:
@@ -26,10 +19,6 @@ def asd(datein_eingabe):
         datein_liste = datein_eingabe
         print(datein_liste)
 
-
-"""while True:
-    if datein_eingabe in datein_liste:
-        pass
-    break    """      
+     
 
 asd(datein_eingabe)
