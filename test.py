@@ -1,5 +1,5 @@
 datein_liste = []
-test = "Hallo"
+test = "Hallo;2"
 datein_eingabe = test.strip()
 
 
@@ -14,7 +14,7 @@ except Exception as e:
 def asd(datein_eingabe): 
     if ";" in datein_eingabe:
         datein_ = datein_eingabe.split(";")
-        print(datein_eingabe)
+        print(type(datein_eingabe))
         for datei in datein_:
             print(datei)
     elif datein_eingabe == ".":

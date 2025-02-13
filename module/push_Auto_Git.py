@@ -22,12 +22,14 @@ class push():
         self.datein_eingabe = datein
         print(self.datein_eingabe)
 
+        #Alle Datein im Angegebenen Ordner
         try:
             self.vorhandene_dateien = os.listdir(self.script_dir)
         except Exception as e:
             print(f"Fehler: {e}")
             sys.exit()
 
+        #Mehrere Datein überprüfen
         if ";" in self.datein_eingabe:
             print("1")
             self.datein_liste = self.datein_eingabe.split(";")
@@ -38,17 +40,22 @@ class push():
                 else:
                     print(f"{datei} nicht vorhanden")
                     sys.exit()
+        #Alle datein nehmen
         elif self.datein_eingabe == ".":
             self.datein_push = "."
             print("2")
+        #Keine Datein eingegeben
         elif not self.datein_eingabe:
             print("Fehler: Keine Datei eingegeben")
-            sys.exit(1)
+            sys.exit()
+        #Nur eine Datei eingegeben
         else:
-            self.datein_push = f'"{self.datein_eingabe}"'
-            print("3")
-
-
+            if self.datein_eingabe in self.vorhandene_dateien:
+                self.datein_push = self.datein_eingabe
+                print("3")
+            else:
+                print("Datei nicht vorhanden")
+                sys.exit()
 
         return self.datein_push
     
@@ -65,9 +72,11 @@ class push():
 
             if self.datein_push == ".":
                 text("git add ", self.datein_push)
-            else:
+            elif len(self.datein_push) > 1:
                 for datei in self.datein_push:
                     text("git add ", datei)
+            else:
+                text("git add ", self.datein_push)
 
             text("git commit -m ", self.convert_commit_message)
             text("git push origin master", "")
