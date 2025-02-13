@@ -29,6 +29,7 @@ class push():
             sys.exit()
 
         if ";" in self.datein_eingabe:
+            print("1")
             self.datein_liste = self.datein_eingabe.split(";")
             for datei in self.datein_liste:
                 if datei in self.vorhandene_dateien:
@@ -38,11 +39,13 @@ class push():
                     sys.exit()
         elif self.datein_eingabe == ".":
             self.datein_push = "."
+            print("2")
         elif not self.datein_eingabe:
             print("Fehler: Keine Datei eingegeben")
             sys.exit(1)
         else:
             self.datein_push = f'"{self.datein_eingabe}"'
+            print("3")
 
 
 
