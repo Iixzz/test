@@ -19,7 +19,7 @@ class push():
 
     def checkDatein(self, datein):
         self.datein_push = []
-        self.datein_eingabe = datein.strip()
+        self.datein_eingabe = datein
         print(self.datein_eingabe)
 
         try:
@@ -33,6 +33,7 @@ class push():
             self.datein_liste = self.datein_eingabe.split(";")
             for datei in self.datein_liste:
                 if datei in self.vorhandene_dateien:
+                    datei = datei.strip()
                     self.datein_push.append(datei)
                 else:
                     print(f"{datei} nicht vorhanden")
