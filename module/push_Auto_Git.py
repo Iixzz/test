@@ -42,7 +42,7 @@ class push():
             print("Fehler: Keine Datei eingegeben")
             sys.exit(1)
         else:
-            self.datein_push = self.datein_eingabe
+            self.datein_push = f'"{self.datein_eingabe}"'
 
 
 
