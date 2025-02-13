@@ -5,10 +5,10 @@ from time import sleep
 
 
 class tag():
-    def __init__(self):
-        self.version = str(input("Welche Version :"))
-        self.script_dir = str(input("Ordner zum hochladen (Dateipfad): "))
-        self.repository_URL = str(input("URL des GitHub-Repository: "))
+    def __init__(self, version, Ordner, repository):
+        self.version = version
+        self.script_dir = Ordner
+        self.repository_URL = repository
 
         self.doTag()
 

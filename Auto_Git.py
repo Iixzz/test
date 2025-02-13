@@ -45,28 +45,28 @@ class PushWindow(tk.Tk):
 
         #Ordner eingabe
         self.label_ordner = tk.Label(self, text="Ordner zum hochladen (Dateipfad)")
-        self.label_ordner.place(x= 150, y=70, height=10)
+        self.label_ordner.place(x= 150, y=70, height=15)
 
         self.entry_ordner = tk.Entry(self, width=50)
         self.entry_ordner.place(x= 150, y= 85 )
 
         #Repository eingabe
         self.label_repository = tk.Label(self, text="URL des GitHub-Repository: ")
-        self.label_repository.place(x= 150, y=120, height=10)
+        self.label_repository.place(x= 150, y=120, height=15)
 
         self.entry_repository = tk.Entry(self, width=50)
         self.entry_repository.place(x= 150, y= 135)
 
         #Message eingabe
         self.label_message = tk.Label(self, text="Commit message: ")
-        self.label_message.place(x= 150, y=170, height=10)
+        self.label_message.place(x= 150, y=170, height=15)
 
         self.entry_message = tk.Entry(self, width=50)
         self.entry_message.place(x= 150, y= 185)
 
         #Datein eingabe
-        self.label_datein = tk.Label(self, text="Datein eingeben (1datei.bsp;2datei.bsp) oder für alle .")
-        self.label_datein.place(x= 150, y=220, height=10)
+        self.label_datein = tk.Label(self, text="Datein eingeben (mit ; trennen) oder für alle .")
+        self.label_datein.place(x= 150, y=220, height=15)
 
         self.entry_datein = tk.Entry(self, width=50)
         self.entry_datein.place(x= 150, y= 235)
@@ -94,18 +94,26 @@ class PullWindow(tk.Tk):
 
         #Ordner eingabe
         self.ordner_label = tk.Label(self, text="Ordner zum hochladen (Dateipfad)")
-        self.ordner_label.place(x= 150, y=70, height=10)
+        self.ordner_label.place(x= 150, y=70, height=15)
 
         self.entry_ordner = tk.Entry(self, width=50)
         self.entry_ordner.place(x= 150, y= 85 )
 
         #Repository eingabe
         self.repository_label = tk.Label(self, text="URL des GitHub-Repository: ")
-        self.repository_label.place(x= 150, y=120, height=10)
+        self.repository_label.place(x= 150, y=120, height=15)
 
         self.entry_repository = tk.Entry(self, width=50)
         self.entry_repository.place(x= 150, y= 135)
 
+        #Eingabe bestätigen button 
+        self.button_eingabe = tk.Button(self, text= "Eingabe bestätigen", command = self.eingabe)
+        self.button_eingabe.place(x = 225 , y = 270, width= 160, height= 20)
+
+    def eingabe(self):
+        ordner = self.entry_ordner.get()
+        repository = self.entry_repository.get()
+        pullAG.pull(ordner, repository)
 
 class TagWindow(tk.Tk):
     def __init__(self):
@@ -117,32 +125,35 @@ class TagWindow(tk.Tk):
         label.pack(pady=10)
 
         #Ordner eingabe
-        self.ordner_label = tk.Label(self, text="Ordner zum hochladen (Dateipfad)")
-        self.ordner_label.place(x= 150, y=70, height=10)
+        self.label_ordner = tk.Label(self, text="Ordner zum hochladen (Dateipfad)")
+        self.label_ordner.place(x= 150, y=70, height=15)
 
         self.entry_ordner = tk.Entry(self, width=50)
         self.entry_ordner.place(x= 150, y= 85 )
 
         #Repository eingabe
-        self.repository_label = tk.Label(self, text="URL des GitHub-Repository: ")
-        self.repository_label.place(x= 150, y=120, height=10)
+        self.label_repository = tk.Label(self, text="URL des GitHub-Repository: ")
+        self.label_repository.place(x= 150, y=120, height=15)
 
         self.entry_repository = tk.Entry(self, width=50)
         self.entry_repository.place(x= 150, y= 135)
 
         #Message eingabe
-        self.tag_label = tk.Label(self, text="Version: ")
-        self.tag_label.place(x= 150, y=170, height=10)
+        self.label_tag = tk.Label(self, text="Version: ")
+        self.label_tag.place(x= 150, y=170, height=15)
 
         self.entry_tag = tk.Entry(self, width=50)
         self.entry_tag.place(x= 150, y= 185)
 
         #Eingabe bestätigen button
-        self.button_eingabe = tk.Button(self, text= "Pull", command = self.eingabe)
-        self.button_.place(x = 255 , y = 150, width= 90, height= 20)
+        self.button_eingabe = tk.Button(self, text= "Eingabe bestätigen", command = self.eingabe)
+        self.button_eingabe.place(x = 255 , y = 270, width= 160, height= 20)
 
-        def eingabe(self):
-            ordner = self.entry_ordner.get()
+    def eingabe(self):
+        ordner = self.entry_ordner.get()
+        repository = self.entry_repository.get()
+        version = self.entry_tag.get()
+        tagAG.tag(version, ordner, repository)
 
 
 

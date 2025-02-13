@@ -4,9 +4,9 @@ from time import sleep
 
 
 class pull():
-    def __init__(self):
-        self.script_dir = str(input("Ordner zum downlowden (Dateipfad): "))
-        self.repository_URL = str(input("URL des GitHub-Repository: "))
+    def __init__(self, Ordner, repository):
+        self.script_dir = Ordner
+        self.repository_URL = repository
 
         self.do_pull()
     
