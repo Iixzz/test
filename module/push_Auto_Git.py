@@ -51,7 +51,7 @@ class push():
         #Nur eine Datei eingegeben
         else:
             if self.datein_eingabe in self.vorhandene_dateien:
-                self.datein_push = list(self.datein_eingabe)
+                self.datein_push = self.datein_eingabe
                 print("3")
             else:
                 print(f"{self.datein_push} nicht vorhanden")
@@ -72,7 +72,7 @@ class push():
 
             if self.datein_push == ".":
                 text("git add ", self.datein_push)
-            elif len(self.datein_push) > 1:
+            elif self.datein_push == list:
                 for datei in self.datein_push:
                     text("git add ", datei)
             else:
