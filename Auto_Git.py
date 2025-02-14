@@ -84,7 +84,9 @@ class PushWindow(tk.Tk):
         self.beenden()
 
     def beenden(self):
-        self.quit()
+        self.destroy()
+        run()
+
 
 
 class PullWindow(tk.Tk):
@@ -119,6 +121,9 @@ class PullWindow(tk.Tk):
         repository = self.entry_repository.get()
         pullAG.pull(ordner, repository)
 
+    def beenden(self):
+        self.destroy()
+        run()
 class TagWindow(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -158,10 +163,15 @@ class TagWindow(tk.Tk):
         repository = self.entry_repository.get()
         version = self.entry_tag.get()
         tagAG.tag(version, ordner, repository)
+    
+    def beenden(self):
+        self.destroy()
+        run()
 
 
-
-
-if __name__ == "__main__":
+def run():
     app = mainWindow()
     app.mainloop()
+
+if __name__ == "__main__":
+    run()
