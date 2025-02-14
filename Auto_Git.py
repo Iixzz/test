@@ -85,9 +85,6 @@ class PushWindow(tk.Tk):
 
     def beenden(self):
         self.destroy()
-        run()
-
-
 
 class PullWindow(tk.Tk):
     def __init__(self):
@@ -123,7 +120,7 @@ class PullWindow(tk.Tk):
 
     def beenden(self):
         self.destroy()
-        run()
+        
 class TagWindow(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -166,7 +163,6 @@ class TagWindow(tk.Tk):
     
     def beenden(self):
         self.destroy()
-        run()
 
 
 def run():
