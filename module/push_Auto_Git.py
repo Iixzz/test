@@ -82,7 +82,7 @@ class push():
             text("git remote rm origin", "")
             sleep(1)
 
-            os.system("taskkill /F /IM cmd.exe")
+            #os.system("taskkill /F /IM cmd.exe")
 
         except Exception as e:  # Ausnahmeobjekt als 'e' referenzieren
             print(f"Fehler: {e}")  # 'e' gibt die Ausnahme-Details an
