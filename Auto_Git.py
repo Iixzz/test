@@ -81,6 +81,10 @@ class PushWindow(tk.Tk):
         message = self.entry_message.get()
         datein = self.entry_datein.get()
         pushAG.push(ordner, repository, message, datein)
+        self.beenden()
+
+    def beenden(self):
+        self.quit()
 
 
 class PullWindow(tk.Tk):
