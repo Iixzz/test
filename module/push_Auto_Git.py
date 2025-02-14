@@ -17,6 +17,7 @@ class push():
 
         self.doPush(datein)
 
+
     def checkDatein(self, datein):
         self.datein_push = []
         self.datein_eingabe = datein
@@ -31,7 +32,6 @@ class push():
 
         #Mehrere Datein überprüfen
         if ";" in self.datein_eingabe:
-            print("1")
             self.datein_liste = self.datein_eingabe.split(";")
             for datei in self.datein_liste:
                 if datei in self.vorhandene_dateien:
@@ -43,7 +43,6 @@ class push():
         #Alle datein nehmen
         elif self.datein_eingabe == ".":
             self.datein_push = "."
-            print("2")
         #Keine Datein eingegeben
         elif not self.datein_eingabe:
             print("Fehler: Keine Datei eingegeben")
@@ -52,7 +51,6 @@ class push():
         else:
             if self.datein_eingabe in self.vorhandene_dateien:
                 self.datein_push = self.datein_eingabe
-                print("3")
             else:
                 print(f"{self.datein_push} nicht vorhanden")
                 sys.exit()
@@ -60,6 +58,7 @@ class push():
         return self.datein_push
     
     
+
     def doPush(self, datein):
         try:
             self.checkDatein(datein)
@@ -83,14 +82,14 @@ class push():
             text("git remote rm origin", "")
             sleep(1)
 
-            """os.system("taskkill /F /IM cmd.exe")"""
+            os.system("taskkill /F /IM cmd.exe")
 
         except Exception as e:  # Ausnahmeobjekt als 'e' referenzieren
             print(f"Fehler: {e}")  # 'e' gibt die Ausnahme-Details an
             sys.exit()
 
 def text(msg1, msg2):
-    kb.write(msg1 +msg2)
+    kb.write(msg1 + msg2)
     kb.press_and_release("enter")
 
 #Ausführung
